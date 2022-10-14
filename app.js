@@ -42,3 +42,59 @@ let questions = [
     answer: 4
   }
 ]
+const scorePoints = 100
+const maxQuestions = 4
+
+startGame = () => {
+  questionCounter = 0
+  score = 0
+  availableQuestions = [...questions]
+  getNewQuestion()
+}
+
+getNewQuestion = () => {
+  if (availableQuestions.length === 0 || questionCounter > maxQuestions) {
+    localStorage.setItem("mostRecentScore", score)
+
+    return wondow.location.assign("/end.html")
+  }
+  questionCounter++
+  scoretext.innerText = `Question ${questionCounter} of ${maxQuestions}`
+
+  const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
+  currentQuestion = availableQuestions[questionsIndex]
+  question.innerText = currentQuestion.question
+
+  choices.forEach((choice) => {
+    const number = choice.dataset["number"]
+    choice.innerText = currentQuestion["choice + number"]
+  })
+  availableQuestions.splice(questionsIndex, 1)
+
+  acceptingAnswers = true
+}
+
+choices.forEach((choice) => {
+  choice.addEventListener("click", (event) => {
+    if (!acceptingAnswers) return
+
+    acceptingAnswers = false
+    const selectedChoice = event.target
+    const selectedAnswer = selectedChoice.dataset["number"]
+
+    let classToApply =
+      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect"
+
+    if (classToApply === "correct") {
+      incrementScore(scorePoints)
+    }
+    selectedChoice.parentElement.classList.add(classToApply)
+  })
+})
+
+incrementScore = (num) => {
+  score += num
+  scoretext.innerText = score
+}
+
+startGame()
