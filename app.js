@@ -10,7 +10,7 @@ let availableQuestions = []
 
 let questions = [
   {
-    question: "what is the capital city of France?",
+    question: "What is the capital city of France?",
     choice1: "London",
     choice2: "Paris",
     choice3: "Monaco",
@@ -18,7 +18,7 @@ let questions = [
     answer: 2
   },
   {
-    question: "what is the capital city of Portugal?",
+    question: "What is the capital city of Portugal?",
     choice1: "Busan",
     choice2: "Dubai",
     choice3: "Lisbon",
@@ -26,7 +26,7 @@ let questions = [
     answer: 3
   },
   {
-    question: "what is the capital city of South-Korea?",
+    question: "What is the capital city of South-Korea?",
     choice1: "Seoul",
     choice2: "Karachi",
     choice3: "Oslo",
@@ -34,7 +34,7 @@ let questions = [
     answer: 1
   },
   {
-    question: "what is the capital city of Chile?",
+    question: "What is the capital city of Chile?",
     choice1: "Havana",
     choice2: "Paris",
     choice3: "Monaco",
@@ -66,7 +66,7 @@ getNewQuestion = () => {
   question.innerText = currentQuestion.question
 
   choices.forEach((choice) => {
-    const number = choice.dataset["number"]
+    const number = choices.dataset["number"]
     choice.innerText = currentQuestion["choice + number"]
   })
   availableQuestions.splice(questionsIndex, 1)
@@ -85,9 +85,6 @@ choices.forEach((choice) => {
     let classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect"
 
-    if (classToApply === "correct") {
-      incrementScore(scorePoints)
-    }
     selectedChoice.parentElement.classList.add(classToApply)
   })
 })

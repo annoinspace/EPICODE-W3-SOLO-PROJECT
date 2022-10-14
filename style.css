@@ -27,7 +27,7 @@ h2 {
   margin: 0 auto;
 }
 #homepage {
-  color: #2f3e46;
+  color: #7f5539;
   font-size: 20px;
   display: flex;
   justify-content: center;
@@ -39,8 +39,9 @@ h2 {
   margin-top: 200px;
   border-radius: 50%;
 }
+
 #homepage:hover {
-  background-color: azure;
+  background-color: #e6ccb2;
   transition: transform 1s;
 }
 
@@ -72,9 +73,10 @@ h2 {
   text-align: center;
   margin-bottom: 20px;
   text-decoration: none;
-  color: white;
-  background-color: #2f3e46;
+  color: #2f3e46;
+  background-color: #caf0f8;
   border-radius: 40px;
+  font-weight: bold;
 }
 
 .btn:hover {
