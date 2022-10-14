@@ -1,0 +1,53 @@
+body {
+  background-color: #9d8189;
+}
+
+h1 {
+  font-size: 50px;
+  color: white;
+  margin-bottom: 40px;
+  margin-top: 100px;
+  display: flex;
+  margin-left: 70px;
+}
+
+.choice-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.choice-container:hover {
+  cursor: pointer;
+}
+
+.choice-prefix {
+  color: white;
+  padding: 2rem;
+}
+.choice-text {
+  padding: 2rem;
+  width: 100%;
+  background-color: #be9ca6;
+}
+.correct {
+  background-color: rgb(58, 95, 58);
+}
+
+.incorrect {
+  background-color: red;
+}
+
+#gamedisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#progress {
+  width: 100px;
+  background-color: aliceblue;
+  text-align: center;
+  display: flex;
+}
