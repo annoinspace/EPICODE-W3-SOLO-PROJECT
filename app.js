@@ -1,6 +1,8 @@
 const question = document.querySelector("#question")
-const choices = Array.from(document.querySelectorAll(".choice-text"))
-const scoretext = document.querySelector("#progress")
+const choices = document.querySelectorAll(".choice-text")
+let choicesArr = Array.from(choices)
+console.log(choicesArr)
+const questionNumber = document.querySelector("#progress")
 
 let currentQuestion = {}
 let acceptingAnswers = true
@@ -42,7 +44,7 @@ let questions = [
     answer: 4
   }
 ]
-const scorePoints = 100
+
 const maxQuestions = 4
 
 startGame = () => {
@@ -53,21 +55,16 @@ startGame = () => {
 }
 
 getNewQuestion = () => {
-  if (availableQuestions.length === 0 || questionCounter > maxQuestions) {
-    localStorage.setItem("mostRecentScore", score)
-
-    return wondow.location.assign("/end.html")
-  }
   questionCounter++
-  scoretext.innerText = `Question ${questionCounter} of ${maxQuestions}`
+  questionNumber.innerText = `Question ${questionCounter} of ${maxQuestions}`
 
   const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
   currentQuestion = availableQuestions[questionsIndex]
   question.innerText = currentQuestion.question
 
-  choices.forEach((choice) => {
-    const number = choices.dataset["number"]
-    choice.innerText = currentQuestion["choice + number"]
+  choices.forEach(() => {
+    const number = choices[i]
+    choices.innerHTML = currentQuestion["choices + number"]
   })
   availableQuestions.splice(questionsIndex, 1)
 
@@ -83,7 +80,7 @@ choices.forEach((choice) => {
     const selectedAnswer = selectedChoice.dataset["number"]
 
     let classToApply =
-      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect"
+      selectedAnswer === currentQuestion.answer ? "correct" : "incorrect"
 
     selectedChoice.parentElement.classList.add(classToApply)
   })
